@@ -1,0 +1,39 @@
+{
+  "name": "simulation-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "npm run prisma:deploy && next build",
+    "start": "next start",
+    "lint": "next lint",
+    "seed": "ts-node src/seed/seed-database.ts",
+    "prisma:deploy": "npm run prisma migrate deploy && prisma generate"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.22.0",
+    "@radix-ui/react-slot": "^1.1.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.11.17",
+    "lucide-react": "^0.459.0",
+    "next": "14.2.18",
+    "react": "^18",
+    "react-dom": "^18",
+    "simulation-app": "file:",
+    "tailwind-merge": "^2.5.4",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.18",
+    "postcss": "^8",
+    "prisma": "^5.22.0",
+    "tailwindcss": "^3.4.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5"
+  }
+}
