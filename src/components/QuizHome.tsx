@@ -1,28 +1,14 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+// import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface QuizFormProps {
   onStart: () => void;
-  onSetQuestionCount: (count: number) => void;
 }
 
-export const QuizHome: React.FC<QuizFormProps> = ({
-  onStart,
-  onSetQuestionCount,
-}) => {
-  const [selectedCount, setSelectedCount] = useState<number>(5); // Valor por defecto
-
-  const handleCountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = parseInt(e.target.value);
-    if (!isNaN(value)) {
-      setSelectedCount(value);
-    }
-  };
-
+export const QuizHome: React.FC<QuizFormProps> = ({ onStart }) => {
   const handleStart = () => {
-    onSetQuestionCount(selectedCount);
+    // onSetQuestionCount(selectedCount);
     onStart();
   };
 
@@ -35,16 +21,20 @@ export const QuizHome: React.FC<QuizFormProps> = ({
       </CardHeader>
       <CardContent className="text-center space-y-6">
         <p className="text-xl">
-          Selecciona la cantidad de preguntas que deseas responder:
+          Este quiz contiene 115 preguntas de opción múltiple.
         </p>
-        <Input
+
+        {/* <p className="text-xl">
+          Selecciona la cantidad de preguntas que deseas responder:
+        </p> */}
+        {/* <Input
           type="number"
           min={1}
-          max={20}
+          max={115}
           value={selectedCount}
           onChange={handleCountChange}
           className="text-center"
-        />
+        /> */}
         <Button
           onClick={handleStart}
           size="lg"

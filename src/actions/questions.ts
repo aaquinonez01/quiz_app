@@ -3,7 +3,7 @@
 import { Question } from "@/interfaces/question.types";
 import prisma from "@/lib/prisma";
 
-export const getQuestions = async (count: number): Promise<Question[]> => {
+export const getQuestions = async (): Promise<Question[]> => {
   try {
     const questions = await prisma.question.findMany({
       include: {
@@ -16,14 +16,10 @@ export const getQuestions = async (count: number): Promise<Question[]> => {
         },
       },
     });
-    console.log(count);
 
     // Aleatorizar y limitar al número solicitado
-    const randomQuestions = questions
-      .sort(() => 0.5 - Math.random())
-      .slice(0, count);
-    console.log(randomQuestions.length);
-    return randomQuestions.map((question) => ({
+    // const randomQuestions = questions.sort(() => 0.5 - Math.random());
+    return questions.map((question) => ({
       id: question.id,
       text: question.text,
       image: question.imageUrl,

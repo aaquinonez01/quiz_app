@@ -14,15 +14,14 @@ export const Simulator = () => {
   const [score, setScore] = useState(0);
   const [quizCompleted, setQuizCompleted] = useState(false);
   const [questions, setQuestions] = useState<Question[]>([]);
-  const [questionCount, setQuestionCount] = useState<number>(5);
 
-  const loadQuestions = async (count: number) => {
-    const newQuestions = await getQuestions(count);
+  const loadQuestions = async () => {
+    const newQuestions = await getQuestions();
     setQuestions(newQuestions);
   };
 
   const startQuiz = async () => {
-    await loadQuestions(questionCount);
+    await loadQuestions();
     setQuizStarted(true);
   };
 
@@ -54,7 +53,7 @@ export const Simulator = () => {
   return (
     <div>
       {!quizStarted ? (
-        <QuizHome onStart={startQuiz} onSetQuestionCount={setQuestionCount} />
+        <QuizHome onStart={startQuiz} />
       ) : quizCompleted ? (
         <QuizCompletion
           score={score}
